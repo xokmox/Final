@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.inyoung.mappers.PaymentMapper">
+
+	<insert id="pay">
+		insert into tbl_payment(amount, means)
+		values(#{amount}, #{means})
+	</insert>
+
+	<update id="updateMemberInfo">
+		update tbl_member 
+		set cash=cash+#{cash}, mileage=mileage+#{mileage} 
+		where m_code = #{m_code}
+	</update>
+	
+	<select id="getMileage" parameterType="Integer" resultType="PaymentVO">
+		select mileage from tbl_member
+		where m_code = #{m_code}
+	</select>
+	
+	<select id="readPayInfo" resultType="PaymentVO">
+		select * from tbl_payment
+		where p_code = #{p_code}
+	</select>
+	
+</mapper>
