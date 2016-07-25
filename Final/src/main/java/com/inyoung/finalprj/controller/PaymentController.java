@@ -1,16 +1,20 @@
 package com.inyoung.finalprj.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.WebUtils;
 
 import com.inyoung.finalprj.domain.PaymentVO;
+import com.inyoung.finalprj.service.MemberService;
 import com.inyoung.finalprj.service.PaymentService;
 
 @Controller
@@ -18,7 +22,9 @@ import com.inyoung.finalprj.service.PaymentService;
 public class PaymentController {
 	
 	@Inject
-	private PaymentService service;
+	private PaymentService p_service;
+
+	@Inject MemberService m_service;
 	
 	private static final Logger logger = LoggerFactory.getLogger(PaymentController.class);
 	
@@ -34,9 +40,9 @@ public class PaymentController {
 	@RequestMapping(value="/payment", method=RequestMethod.POST)
 	public String pay(PaymentVO vo, Model model) throws Exception{ //이용권 구매
 		logger.info("vo :" + vo.toString());
-		service.pay(vo);
-		model.addAttribute("payInfo", service.readPayInfo(vo.getP_code()));
-		return "/fare_guide/ConfirmPayment";
+		p_service.pay(vo);
+		model.addAttribute("payInfo", vo);
+		return "redirect:/fare_guide/ConfirmPayment";
 	}	
 	
 	@RequestMapping(value="/gift", method=RequestMethod.GET)

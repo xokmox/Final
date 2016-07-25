@@ -72,26 +72,21 @@
 		<div class="col-sm-4">
 			<h3 style="color: #aaaaaa; font-size:xlarge">결제가 완료되었습니다!</h3><br/>
 
-<form role="form" method="post">
-
-	<input type='hidden' name='p_code' value="${PaymentVO.p_code}">
-
-</form>
 			<table class="table table-hover">
 				<tr>
-					<td><b>${PaymentVO.p_code}회원님이 결제한 정보입니다.</b></td><td></td>
+					<td><b>${info.p_code}회원님이 결제한 정보입니다.</b></td><td></td>
 				</tr>
 				<tr>
-					<td>결제번호</td><td>${PaymentVO.p_code}</td>
+					<td>결제번호</td><td>${info.p_code}</td>
 				</tr>
 				<tr>
-					<td>결제일자</td><td>${PaymentVO.time}</td>
+					<td>결제일자</td><td>${time}</td>
 				</tr>
 				<tr>
-					<td>결제수단</td><td>${PaymentVO.means}</td>
+					<td>결제수단</td><td>${means}</td>
 				</tr>
 				<tr>
-					<td><b>최종결제금액</b></td><td><b>${PaymentVO.amount}</b></td>
+					<td><b>최종결제금액</b></td><td><b>${PAY_INFO.amount}</b></td>
 				</tr>
 			</table>
 		</div>

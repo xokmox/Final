@@ -11,25 +11,30 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
 <script>
 
-	function getInfo(){
+	function submit(){
 		var amount = $("#amount").val();
 		var means = $(":input:radio[name=means]:checked").val();
 		var mileage = $("#mileage").val();
 		
-		alert(		
-					"결제수단 : " +  means + "\n" + 
-					"사용 한 마일리지 : " + mileage + "P" + "\n" +
-					"최종 결제금액 : " + (amount) + "원" + "\n" +
-					" \n\n\n" + 
-					"확인을 누르면 결제됩니다."
-		);
+		if(sum < 0){
+			alert("결제금액보다 사용 한 마일리지 금액이 커서 결제할 수 없습니다.");
+		}
+		else if(sum > 0){
+			alert(		
+						"결제수단 : " +  means + "\n" + 
+						"사용 한 마일리지 : " + mileage + "P" + "\n" +
+						"최종 결제금액 : " + amount + "원" + "\n" +
+						" \n\n\n" + 
+						"확인을 누르면 결제됩니다."
+			);
+		}
+		document.paymentform.submit();
 	}
 	
 	
@@ -38,9 +43,14 @@
 		var mileage = $("#mileage").val();
 		var sum = amount-mileage;
 		
-		$(document).ready(function() {
-	        $('#amount').val(sum);
-	    });
+		if(sum < 0 ){
+			alert("결제금액보다 사용 할 마일리지 포인트가 클 수 없습니다.");
+		}
+		else{
+			$(document).ready(function() {
+		        $('#amount').val(sum);
+		    });
+		}
 	}
 	
 </script>
@@ -164,8 +174,12 @@
 					</td><td></td>
 				</tr>
 				<tr>
-					<td>마일리지</td><td><input type="text" name="mileage" id="mileage">&nbsp;P</td>
-					<td><h6>사용 가능 마일리지 : P</h6></td>
+					<td>마일리지</td>
+					<td>
+						<input type="text" name="mileage" id="mileage">&nbsp;P
+						<button type="button" class="btn btn-default btn-xs" onclick="setAmount()">적용</button>
+					</td>
+					<td><h6>사용 가능 마일리지 : ${MemberVO.mileage}P</h6></td>
 				</tr>
 				<tr>
 					<td>최종 결제금액 :</td>
@@ -178,7 +192,7 @@
 
 	<div class="col-sm-3">
 		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-		  <button type="submit" class="btn btn-default btn-s" style="margin-top: 15px" onclick="getInfo()">확인</button>
+		  <button type="button" class="btn btn-default btn-s" style="margin-top: 15px" onclick=" return submit()">확인</button>
 	</div>
 </form>
 </div>

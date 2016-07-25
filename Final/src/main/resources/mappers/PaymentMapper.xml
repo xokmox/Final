@@ -9,17 +9,6 @@
 		insert into tbl_payment(amount, means)
 		values(#{amount}, #{means})
 	</insert>
-
-	<update id="updateMemberInfo">
-		update tbl_member 
-		set cash=cash+#{cash}, mileage=mileage+#{mileage} 
-		where m_code = #{m_code}
-	</update>
-	
-	<select id="getMileage" parameterType="Integer" resultType="PaymentVO">
-		select mileage from tbl_member
-		where m_code = #{m_code}
-	</select>
 	
 	<select id="readPayInfo" resultType="PaymentVO">
 		select * from tbl_payment

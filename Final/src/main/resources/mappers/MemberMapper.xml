@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.inyoung.mappers.MemberMapper">
+
+
+	<update id="updateCash">
+		update tbl_member 
+		set cash=cash+#{cash}, mileage=mileage+#{mileage} 
+		where m_code = #{m_code}	
+	</update>
+	
+<!-- 	<update id="upgrade"> -->
+<!-- 		update tbl_member  -->
+<!-- 		set grade -->
+<!-- 	</update> -->
+	
+	<select id="getMileage" resultType="MemberVO">
+		select mileage from tbl_member
+		where m_code = #{m_code}
+	</select>
+	
+	
+</mapper>

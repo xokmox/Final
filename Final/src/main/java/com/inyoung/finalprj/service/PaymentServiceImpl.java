@@ -1,12 +1,9 @@
 package com.inyoung.finalprj.service;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.inyoung.finalprj.domain.MemberVO;
 import com.inyoung.finalprj.domain.PaymentVO;
 import com.inyoung.finalprj.persistence.PaymentDAO;
 

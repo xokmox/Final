@@ -66,19 +66,19 @@
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
 		    <div class="item active">
-		      <img src="<c:url value="/resources/images/cycle1.jpg"></c:url>" alt="cycle" style="width: 100%; height: auto;">
+		      <img src="<c:url value="/resources/images/main/image_slider/main1.jpg"></c:url>" alt="cycle" style="width: 100%; height: auto;">
 		      <div class="carousel-caption">
 		        	첫번째 사진
 		      </div>
 		    </div>
 		    <div class="item">
-		      <img src="<c:url value="/resources/images/cycle2.jpg"></c:url>" alt="cycle" style="width: 100%; height: auto;">
+		      <img src="<c:url value="/resources/images/main/image_slider/main2.jpg"></c:url>" alt="cycle" style="width: 100%; height: auto;">
 		      <div class="carousel-caption">
 		        	두번째 사진
 		      </div>
 		    </div>
 		    <div class="item">
-		      <img src="<c:url value="/resources/images/cycle3.jpg"></c:url>" alt="cycle" style="width: 100%; height: auto;">
+		      <img src="<c:url value="/resources/images/main/image_slider/main3.jpg"></c:url>" alt="cycle" style="width: 100%; height: auto;">
 		      <div class="carousel-caption">
 		        	세번째 사진
 		      </div>
